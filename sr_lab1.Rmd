@@ -1,0 +1,37 @@
+---
+title: "ESM 244- Lab 1"
+author: "Sydney Rilum"
+date: "1/6/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+# library(sf)
+# library(tmap)
+```
+
+### Read in SF trees data
+
+```{r}
+sf_trees <- read_csv(here("data", "sf_trees", "sf_trees.csv"))
+```
+
+### Basic wrangling reminders
+
+Refresh some skills for data wrangling and summary statistics using functions in the `dplyr` package.
+
+Find the top 5 highest observations of trees by legal_status, do some wrangling, make a graph.
+
+```{r}
+top_5_status <- sf_trees %>% 
+  count(legal_status) %>% 
+  drop_na(legal_status) %>%    # drops NA values from that column
+  rename(tree_count = n) %>%   # renames column name
+  relocate(tree_count) %>%     # makes that column the first column
+  slice_max(tree_count, n = 5) # keeps top 5 row values in that column
+  
+```
+
