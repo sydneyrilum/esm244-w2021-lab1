@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(here)
 # library(sf)
-# library(tmap)
+library(tmap)
 ```
 
 ### Read in SF trees data
