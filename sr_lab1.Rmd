@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(here)
-# library(sf)
+library(sf)
 library(tmap)
 ```
 
@@ -35,6 +35,7 @@ top_5_status <- sf_trees %>%
 ```
 
 Make a graph of those top 5 observations by legal status.
+
 ```{r}
 ggplot(data = top_5_status, aes(x = fct_reorder(legal_status, tree_count), y = tree_count)) + # puts counts in order
   geom_col() +
